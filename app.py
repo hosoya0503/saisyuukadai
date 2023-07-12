@@ -26,6 +26,7 @@ def books_list():
     #     (default, '今から始める仮想通過', '高橋 洋平', '龍澤出版', 7),
     #     (default, 'heroku 入門', '細川 潤哉', 'MCL出版', 8),
     # ]
+    
     books_list = bookdb.select_all_books()
     return render_template('books_list.html', books=books_list)
 
