@@ -17,3 +17,14 @@ def select_all_books():
     connection.close()
     return rows
 
+def insert_book(title, author, publisher, isbn):
+    connection = get_connection()
+    cursor = connection.cursor()
+    sql = 'INSERT INTO books_management VALUES(default, %s, %s, %s, %s)'
+    
+    cursor.execute(sql, (title, author, publisher, isbn))
+    
+    connection.commit()
+    cursor.close()
+    connection.close()
+
