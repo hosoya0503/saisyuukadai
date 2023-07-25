@@ -30,27 +30,22 @@ def books_list():
     books_list = bookdb.select_all_books()
     return render_template('books_list.html', books=books_list)
    
-@app.route('/registerbook_exe', methods=['POST'])
-def registerbook_exe():
+@app.route('/a')
+def a():
+    return render_template('registerbook_exe.html')
+
+@app.route('/b', methods=['POST'])
+def b():
     title = request.form.get('title')
     author = request.form.get('author')
     publisher = request.form.get('publisher')
     isbn = request.form.get('isbn')
     
     bookdb.insert_book(title, author, publisher, isbn)
-    
-    books_list = bookdb.select_all_books()
-    return render_template('registerbook_exe.html', books=books_list)
+
+    return render_template('kanryou.html')
 
 @app.route('/search', methods=['POST'])
-def search():
-    keyword = request.form.get('text')
-    if keyword:
-        results = db.search_books(keyword)
-        return render_template('search_results.html', results=results)
-    else:
-        return redirect(url_for('mypage'))
- 
 
 @app.route('/', methods=['POST'])
 def login():
