@@ -16,17 +16,6 @@ def index():
 
 @app.route('/list')
 def books_list():
-    # books_list = [
-    #     (default, 'よく分かるPython', '佐々木 磨生', 'MCL出版', 1),
-    #     (default, 'LinuC 詳解', '細川 潤哉', 'MCL出版', 2),
-    #     (default, 'Servlet 入門', '高橋 洋平', 'ジョビ出版', 3),
-    #     (default, 'Flask 入門', '高橋 洋平', 'ジョビ出版', 4),
-    #     (default, 'よく分かるUML', '細川 潤哉', 'MCL出版', 5),
-    #     (default, 'Django 入門', '佐々木 磨生', '龍澤出版', 6),
-    #     (default, '今から始める仮想通過', '高橋 洋平', '龍澤出版', 7),
-    #     (default, 'heroku 入門', '細川 潤哉', 'MCL出版', 8),
-    # ]
-    
     books_list = bookdb.select_all_books()
     return render_template('books_list.html', books=books_list)
    
