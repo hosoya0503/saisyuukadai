@@ -45,8 +45,16 @@ def b():
 
     return render_template('kanryou.html')
 
-@app.route('/search', methods=['POST'])
+@app.route('/de')
+def de():
+    return render_template('deletebook.html')
 
+@app.route('/delete', methods=['POST'])
+def delete():
+    isbn = request.form.get('isbn')
+    bookdb.delete_book(isbn)
+    return render_template('sakujo.html')
+    
 @app.route('/', methods=['POST'])
 def login():
     user_name = request.form.get('username')

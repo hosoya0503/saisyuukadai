@@ -28,3 +28,20 @@ def insert_book(title, author, publisher, isbn):
     cursor.close()
     connection.close()
 
+def delete_book(isbn):
+    sql = "DELETE FROM books_management WHERE isbn=%s"
+    count=0
+    try:
+        connection = get_connection()
+        cursor = connection.cursor()
+        cursor.execute(sql, (isbn,))
+        connection.commit()
+    except psycopg2.DatabaseError:
+        count = 1
+    finally :
+        connection.close()
+        cursor.close()
+    if count ==  1:
+        return 0
+    else :
+        return
